@@ -62,7 +62,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-white dark:bg-stone-900">
+    <div className="flex min-h-screen bg-white font-sans">
       <SideNavBar />
       
       <div className="flex-1 flex flex-col transition-all duration-300 md:pl-28 lg:pl-80">

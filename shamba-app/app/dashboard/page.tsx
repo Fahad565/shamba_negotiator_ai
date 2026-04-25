@@ -29,7 +29,7 @@ export default function DashboardPage() {
   }, [])
 
   return (
-    <div className="flex min-h-screen bg-white dark:bg-stone-900 transition-colors duration-500 pb-24 md:pb-0">
+    <div className="flex min-h-screen bg-white transition-colors duration-500 pb-24 md:pb-0 font-sans">
       <SideNavBar />
       
       {/* Main Content Area - responsive padding for floating sidebar */}

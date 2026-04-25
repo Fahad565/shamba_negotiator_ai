@@ -21,7 +21,7 @@ export function SideNavBar() {
   return (
     <aside 
       className={cn(
-        "hidden md:flex flex-col fixed left-4 top-4 bottom-4 z-40 bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300 ease-in-out",
+        "hidden md:flex flex-col fixed left-4 top-4 bottom-4 z-40 bg-white border border-stone-100 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-300 ease-in-out",
         isCollapsed ? "w-20" : "w-72"
       )}
     >
