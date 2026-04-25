@@ -1,10 +1,13 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import { useLocation } from "@/hooks/useLocation"
+import { getWeatherData, getWeatherInsight } from "@/lib/weather"
+import { chatWithNegotiator } from "@/lib/gemini"
 import { SideNavBar } from "@/components/SideNavBar"
 import { BottomNavBar } from "@/components/BottomNavBar"
 import { TopHeader } from "@/components/TopHeader"
-import { Mic, Send, Paperclip, PlusCircle, Brain, Sprout, MapPin, TrendingUp } from "lucide-react"
+import { Mic, Send, Paperclip, PlusCircle, Brain, Sprout, MapPin, TrendingUp, Loader2 } from "lucide-react"
 
 interface Message {
   role: "user" | "ai"
@@ -13,11 +16,14 @@ interface Message {
 }
 
 export default function ChatPage() {
+  const { city, latitude, longitude } = useLocation()
   const [messages, setMessages] = useState<Message[]>([
+    { role: "ai", content: `Sasa Mama! I can see you are near ${city}. Just checked the hubs for you. Maize prices are looking interesting today.`, time: "10:41 AM" },
     { role: "user", content: "Bro, bei ya mahindi leo iko aje?", time: "10:42 AM" },
-    { role: "ai", content: "Sasa Mama Akinyi! Maize prices in Kitale are at KES 3,200 per bag today. There's a slight increase from yesterday.", time: "10:43 AM" },
+    { role: "ai", content: "Maize prices in Kitale are at KES 3,200 per bag today. There's a slight increase from yesterday.", time: "10:43 AM" },
   ])
   const [input, setInput] = useState("")
+  const [loading, setLoading] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -26,20 +32,33 @@ export default function ChatPage() {
     }
   }, [messages])
 
-  const handleSend = () => {
-    if (!input.trim()) return
+  const handleSend = async () => {
+    if (!input.trim() || loading) return
     const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    setMessages([...messages, { role: "user", content: input, time: now }])
+    const userMsg: Message = { role: "user", content: input, time: now }
+    setMessages(prev => [...prev, userMsg])
     setInput("")
+    setLoading(true)
     
-    // Simulate AI response
-    setTimeout(() => {
+    try {
+      let context = ""
+      if (latitude && longitude) {
+        const weather = await getWeatherData(latitude, longitude)
+        context = `Farmer is in ${city}. Weather info: ${weather.forecast}. Market insight: ${getWeatherInsight(weather)}`
+      }
+
+      const response = await chatWithNegotiator([...messages, userMsg], input, context)
+      
       setMessages(prev => [...prev, { 
         role: "ai", 
-        content: "Noma sana! I'm checking the latest predictive trends for you...", 
+        content: response, 
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
       }])
-    }, 1000)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -124,9 +143,16 @@ export default function ChatPage() {
             </div>
             <button 
               onClick={handleSend}
-              className="h-[48px] w-[48px] shrink-0 bg-primary text-on-primary rounded-full flex items-center justify-center hover:bg-primary/90 active:scale-95 transition-all shadow-md group"
+              disabled={loading}
+              className="h-[48px] w-[48px] shrink-0 bg-primary text-on-primary rounded-full flex items-center justify-center hover:bg-primary/90 active:scale-95 transition-all shadow-md group disabled:opacity-50"
             >
-              {input ? <Send className="w-5 h-5" /> : <Mic className="w-5 h-5 group-hover:scale-110 transition-transform" />}
+              {loading ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : input ? (
+                <Send className="w-5 h-5" />
+              ) : (
+                <Mic className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              )}
             </button>
           </div>
         </div>
