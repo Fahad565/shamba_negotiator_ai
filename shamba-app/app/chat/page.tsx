@@ -174,7 +174,7 @@ export default function ChatPage() {
               </button>
             </div>
             <button 
-              onClick={handleSend}
+              onClick={() => handleSend()}
               disabled={loading}
               className="h-[48px] w-[48px] shrink-0 bg-primary text-on-primary rounded-full flex items-center justify-center hover:bg-primary/90 active:scale-95 transition-all shadow-md group disabled:opacity-50"
             >
