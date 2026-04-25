@@ -4,6 +4,7 @@ import { SideNavBar } from "@/components/SideNavBar"
 import { BottomNavBar } from "@/components/BottomNavBar"
 import { TopHeader } from "@/components/TopHeader"
 import { Sprout, MapPin, TrendingUp, CloudRain, Lightbulb, MessageSquare, ArrowDown, ChevronRight, TrendingDown } from "lucide-react"
+import Link from "next/link"
 
 export default function DashboardPage() {
   return (
