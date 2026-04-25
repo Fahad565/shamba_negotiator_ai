@@ -18,23 +18,32 @@ If you don't have specific data for a query, give general advice based on the se
 };
 
 export async function chatWithNegotiator(history: any[], message: string, context?: string) {
-    if (!apiKey) return "API Key missing. Please set NEXT_PUBLIC_GEMINI_API_KEY.";
+    const key = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     
-    const model = getMarketNegotiator();
+    if (!key || key === "your_gemini_api_key_here") {
+        return "API Key missing or invalid. Please check your .env.local file and ensure NEXT_PUBLIC_GEMINI_API_KEY is set correctly. If you just added it, please restart your dev server.";
+    }
     
-    // Add weather/location context to the message if available
-    const augmentedMessage = context 
-        ? `Context: ${context}\n\nUser Message: ${message}`
-        : message;
+    try {
+        const model = getMarketNegotiator();
+        
+        // Add weather/location context to the message if available
+        const augmentedMessage = context 
+            ? `Context: ${context}\n\nUser Message: ${message}`
+            : message;
 
-    const chat = model.startChat({
-        history: history.map(h => ({
-            role: h.role === 'user' ? 'user' : 'model',
-            parts: [{ text: h.content }],
-        })),
-    });
+        const chat = model.startChat({
+            history: history.map(h => ({
+                role: h.role === 'user' ? 'user' : 'model',
+                parts: [{ text: h.content }],
+            })),
+        });
 
-    const result = await chat.sendMessage(augmentedMessage);
-    const response = await result.response;
-    return response.text();
+        const result = await chat.sendMessage(augmentedMessage);
+        const response = await result.response;
+        return response.text();
+    } catch (error: any) {
+        console.error("Gemini Error:", error);
+        return `Noma! Some error occurred while talking to the AI: ${error.message}`;
+    }
 }

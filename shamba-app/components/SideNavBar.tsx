@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils"
 const navItems = [
   { icon: LayoutDashboard, label: "Home", href: "/dashboard" },
   { icon: MessageSquare, label: "Negotiate", href: "/chat" },
-  { icon: TrendingUp, label: "Market", href: "/market" },
-  { icon: Sprout, label: "Advice", href: "/prediction" },
+  { icon: TrendingUp, label: "Market Trends", href: "/market" },
+  { icon: Sprout, label: "My Shamba", href: "/dashboard" },
   { icon: History, label: "History", href: "/history" },
 ]
 
@@ -17,7 +17,7 @@ export function SideNavBar() {
   const pathname = usePathname()
 
   return (
-    <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-stone-50 dark:bg-stone-950 w-64 border-r border-stone-200 dark:border-stone-800 shadow-xl overflow-hidden">
+    <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-container-highest w-72 border-r border-outline-variant/30 shadow-2xl transition-all duration-500 overflow-hidden">
       <div className="p-6 border-b border-stone-200 dark:border-stone-800">
         <h1 className="font-bold text-emerald-900 dark:text-emerald-400 text-xl font-headline-md mb-8">Shamba Negotiator</h1>
         
