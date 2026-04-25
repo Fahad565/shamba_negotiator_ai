@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   // Allow mobile testing on the local network
   // @ts-ignore
-  allowedDevOrigins: ['192.168.43.228', 'localhost:3000'],
+  allowedDevOrigins: ['192.168.43.228', '192.168.1.58', 'localhost:3000'],
   serverExternalPackages: [],
 };
 

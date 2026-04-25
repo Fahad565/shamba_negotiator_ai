@@ -62,60 +62,60 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-white font-sans">
+    <div className="flex min-h-screen bg-white font-sans text-stone-900">
       <SideNavBar />
       
       <div className="flex-1 flex flex-col transition-all duration-300 md:pl-28 lg:pl-80">
         <TopHeader />
         
         {/* Context Bar - Sticky and correctly aligned */}
-        <div className="sticky top-[64px] z-30 px-4 py-3 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 flex gap-3 overflow-x-auto hide-scrollbar shadow-sm">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-50 dark:bg-stone-800 rounded-lg border border-stone-200 dark:border-stone-700 shrink-0">
-            <Sprout className="w-4 h-4 text-emerald-600" />
-            <span className="text-xs text-stone-500 font-bold">Crop:</span>
-            <span className="text-sm font-black text-stone-900 dark:text-stone-100">Maize</span>
+        <div className="sticky top-[72px] z-30 px-6 py-4 bg-white border-b border-stone-100 flex gap-4 overflow-x-auto hide-scrollbar shadow-sm">
+          <div className="flex items-center gap-2 px-4 py-2 bg-stone-50 rounded-xl border border-stone-100 shrink-0">
+            <Sprout className="w-4 h-4 text-emerald-700" />
+            <span className="text-[10px] text-stone-400 font-black uppercase tracking-widest">Crop</span>
+            <span className="text-sm font-black text-stone-900">Maize</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-50 dark:bg-stone-800 rounded-lg border border-stone-200 dark:border-stone-700 shrink-0">
-            <MapPin className="w-4 h-4 text-emerald-600" />
-            <span className="text-xs text-stone-500 font-bold">Location:</span>
-            <span className="text-sm font-black text-stone-900 dark:text-stone-100">Kitale</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-stone-50 rounded-xl border border-stone-100 shrink-0">
+            <MapPin className="w-4 h-4 text-emerald-700" />
+            <span className="text-[10px] text-stone-400 font-black uppercase tracking-widest">Location</span>
+            <span className="text-sm font-black text-stone-900">Kitale Hub</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg border border-emerald-100 dark:border-emerald-800 shrink-0">
-            <TrendingUp className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
-            <span className="text-xs text-stone-500 font-bold">Trend:</span>
-            <span className="text-sm font-black text-emerald-700 dark:text-emerald-400">Upwards</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-xl border border-emerald-100 shrink-0">
+            <TrendingUp className="w-4 h-4 text-emerald-900" />
+            <span className="text-[10px] text-emerald-700 font-black uppercase tracking-widest">Trend</span>
+            <span className="text-sm font-black text-emerald-900">Upwards</span>
           </div>
         </div>
 
         {/* Chat Area */}
         <main 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto px-4 py-8 md:px-8 lg:px-12 flex flex-col gap-6 pb-40 scroll-smooth bg-stone-50/50 dark:bg-stone-950/20"
+          className="flex-1 overflow-y-auto px-4 py-10 md:px-12 lg:px-20 flex flex-col gap-8 pb-48 scroll-smooth bg-stone-50/30"
         >
-          <div className="flex justify-center my-4">
-            <span className="px-4 py-1.5 bg-stone-200 dark:bg-stone-800 rounded-full text-[10px] text-stone-600 dark:text-stone-400 font-black uppercase tracking-widest shadow-sm border border-stone-300 dark:border-stone-700">Today</span>
+          <div className="flex justify-center my-6">
+            <span className="px-6 py-2 bg-white rounded-full text-[10px] text-stone-400 font-black uppercase tracking-[0.2em] shadow-sm border border-stone-100">Today • {city || "Kenya"}</span>
           </div>
 
           {messages.map((msg, i) => (
             <div 
               key={i} 
-              className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} w-full animate-in fade-in slide-in-from-bottom-2 duration-300`}
+              className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} w-full animate-in fade-in slide-in-from-bottom-4 duration-500`}
             >
-              <div className={`flex items-end gap-3 max-w-[85%] md:max-w-[70%] ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
+              <div className={`flex items-end gap-4 max-w-[90%] md:max-w-[75%] ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
                 {msg.role === "ai" && (
-                  <div className="w-9 h-9 rounded-xl bg-emerald-900 flex items-center justify-center shrink-0 shadow-lg mb-1">
-                    <Brain className="w-5 h-5 text-white fill-current" />
+                  <div className="w-12 h-12 rounded-[1.25rem] bg-emerald-900 flex items-center justify-center shrink-0 shadow-xl mb-1">
+                    <Brain className="w-6 h-6 text-white fill-current" />
                   </div>
                 )}
-                <div className={`px-5 py-4 rounded-3xl shadow-sm border ${
+                <div className={`px-6 py-5 rounded-[2rem] shadow-sm border ${
                   msg.role === "user" 
-                    ? "bg-emerald-900 text-white rounded-tr-sm border-emerald-800" 
-                    : "bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100 rounded-tl-sm border-stone-200 dark:border-stone-800"
+                    ? "bg-emerald-900 text-white rounded-tr-md border-emerald-800" 
+                    : "bg-white text-stone-900 rounded-tl-md border-stone-100"
                 }`}>
-                  <p className="text-sm md:text-base font-medium leading-relaxed">{msg.content}</p>
+                  <p className="text-base font-bold leading-relaxed">{msg.content}</p>
                 </div>
               </div>
-              <span className={`text-[10px] font-bold text-stone-400 dark:text-stone-600 mt-2 ${msg.role === "user" ? "mr-2" : "ml-12"}`}>
+              <span className={`text-[10px] font-black text-stone-300 mt-2 ${msg.role === "user" ? "mr-4" : "ml-[72px]"}`}>
                 {msg.time}
               </span>
             </div>
@@ -123,7 +123,7 @@ export default function ChatPage() {
         </main>
 
         {/* Input Area */}
-        <div className="fixed bottom-0 left-0 transition-all duration-300 md:left-28 lg:left-80 right-0 bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 p-4 z-40 pb-28 md:pb-6 shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
+        <div className="fixed bottom-0 left-0 transition-all duration-300 md:left-28 lg:left-80 right-0 bg-white border-t border-stone-100 p-4 z-40 pb-28 md:pb-6 shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
           <div className="max-w-3xl mx-auto flex items-end gap-2 relative">
             <div className="flex-1 relative rounded-2xl border border-tertiary bg-surface-container-lowest focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-sm flex items-center overflow-hidden">
               <button className="p-3 text-on-surface-variant hover:text-primary transition-colors">
