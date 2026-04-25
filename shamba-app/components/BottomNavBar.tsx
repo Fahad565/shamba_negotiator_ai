@@ -9,7 +9,6 @@ const navItems = [
   { icon: LayoutDashboard, label: "Home", href: "/dashboard" },
   { icon: MessageSquare, label: "Negotiate", href: "/chat" },
   { icon: TrendingUp, label: "Market", href: "/market" },
-  { icon: Sprout, label: "Shamba", href: "/shamba" },
 ]
 
 export function BottomNavBar() {

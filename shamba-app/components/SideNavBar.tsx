@@ -10,8 +10,6 @@ const navItems = [
   { icon: LayoutDashboard, label: "Home", href: "/dashboard", key: "home" },
   { icon: MessageSquare, label: "Negotiate", href: "/chat", key: "chat" },
   { icon: TrendingUp, label: "Market Trends", href: "/market", key: "market" },
-  { icon: Sprout, label: "My Shamba", href: "/shamba", key: "shamba" },
-  { icon: History, label: "History", href: "/history", key: "history" },
 ]
 
 export function SideNavBar() {
