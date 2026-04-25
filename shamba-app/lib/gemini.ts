@@ -27,11 +27,20 @@ Always be encouraging, trustworthy, and explain things simply.`,
             ? `Context: ${context}\n\nUser Message: ${message}`
             : message;
 
-        const chat = model.startChat({
-            history: history.map(h => ({
+        // Gemini requires the first message in history to be from the 'user'
+        const chatHistory = history
+            .map(h => ({
                 role: h.role === 'user' ? 'user' : 'model',
                 parts: [{ text: h.content }],
-            })),
+            }))
+            .filter((item, index, array) => {
+                // Find the first 'user' message index
+                const firstUserIndex = array.findIndex(i => i.role === 'user');
+                return index >= firstUserIndex;
+            });
+
+        const chat = model.startChat({
+            history: chatHistory.slice(0, -1), // Everything except the current message
         });
 
         const result = await chat.sendMessage(augmentedMessage);
