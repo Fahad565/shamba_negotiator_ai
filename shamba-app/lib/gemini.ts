@@ -13,7 +13,7 @@ export async function chatWithNegotiator(history: any[], message: string, contex
     }
 
     const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash-latest", // Switching to latest flash for reliability
+        model: "gemini-2.5-flash", 
         systemInstruction: `You are a friendly Kenyan Market Negotiator AI for smallholder farmers. 
 Speak naturally in Sheng + English code-switching (e.g., 'Sasa Mama! Bei ya mahindi leo iko juu kiasi...'). 
 Help farmers decide when and how to sell their produce to get the best price. 
