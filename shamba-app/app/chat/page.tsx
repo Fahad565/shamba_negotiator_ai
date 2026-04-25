@@ -18,26 +18,43 @@ interface Message {
 export default function ChatPage() {
   const { city, latitude, longitude } = useLocation()
   const [messages, setMessages] = useState<Message[]>([
-    { role: "ai", content: `Sasa Mama! I can see you are near ${city}. Just checked the hubs for you. Maize prices are looking interesting today.`, time: "10:41 AM" },
-    { role: "user", content: "Bro, bei ya mahindi leo iko aje?", time: "10:42 AM" },
-    { role: "ai", content: "Maize prices in Kitale are at KES 3,200 per bag today. There's a slight increase from yesterday.", time: "10:43 AM" },
+    { role: "ai", content: `Sasa Mama! I can see you are near ${city || "Detecting..."}. Just checked the hubs for you. Maize prices are looking interesting today.`, time: "10:41 AM" },
   ])
   const [input, setInput] = useState("")
   const [loading, setLoading] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
+  const suggestions = [
+    "Bora niuze leo ama ningoje?",
+    "Predict bei ya mahindi Dec",
+    "Climate impact kwa harvest ?",
+    "Advice ya ku-store maize"
+  ]
+
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    const saved = localStorage.getItem("shamba_chat_history")
+    if (saved) {
+      try {
+        setMessages(JSON.parse(saved))
+      } catch (e) {
+        console.error("Failed to parse history", e)
+      }
     }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("shamba_chat_history", JSON.stringify(messages))
   }, [messages])
 
-  const handleSend = async () => {
-    if (!input.trim() || loading) return
+  const handleSend = async (customInput?: string) => {
+    const textToSend = customInput || input
+    if (!textToSend.trim() || loading) return
+    
     const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    const userMsg: Message = { role: "user", content: input, time: now }
+    const userMsg: Message = { role: "user", content: textToSend, time: now }
+    
     setMessages(prev => [...prev, userMsg])
-    setInput("")
+    if (!customInput) setInput("")
     setLoading(true)
     
     try {
@@ -47,7 +64,7 @@ export default function ChatPage() {
         context = `Farmer is in ${city}. Weather info: ${weather.forecast}. Market insight: ${getWeatherInsight(weather)}`
       }
 
-      const response = await chatWithNegotiator([...messages, userMsg], input, context)
+      const response = await chatWithNegotiator([...messages, userMsg], textToSend, context)
       
       setMessages(prev => [...prev, { 
         role: "ai", 
@@ -120,6 +137,21 @@ export default function ChatPage() {
               </span>
             </div>
           ))}
+
+          {/* Suggestion Chips */}
+          {!loading && messages.length < 10 && (
+            <div className="flex flex-wrap gap-2 mt-4 animate-in fade-in slide-in-from-bottom-2 duration-700">
+              {suggestions.map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleSend(s)}
+                  className="px-4 py-2 bg-white border border-stone-200 rounded-xl text-xs font-bold text-stone-600 hover:border-emerald-600 hover:text-emerald-700 transition-all shadow-sm active:scale-95"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          )}
         </main>
 
         {/* Input Area */}

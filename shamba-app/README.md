@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌾 Shamba Negotiator AI
 
-## Getting Started
+**The Ultimate Intelligence Gear for the Modern Kenyan Farmer.**
 
-First, run the development server:
+Shamba Negotiator is an AI-powered market intelligence platform designed to empower smallholder farmers in Kenya with real-time price prognosis, negotiation scripts, and climate-aware harvesting advice.
 
+---
+
+## 🌟 Standout Features (MVP)
+
+### 🧠 **Neural Negotiation Hub**
+*   **Dynamic Chat Memory**: Unlike generic bots, Shamba AI remembers your conversation across refreshes using **Safe-Local Persistence**. Your negotiation history stays with you.
+*   **Smart Intelligence Chips**: Custom suggestion chips that predict what you need to ask next—from price trajectory to storage risks.
+*   **Gemini 2.5 Flash Powered**: Running on the cutting-edge `gemini-2.5-flash` model for near-instantaneous reasoning and market prediction.
+
+### 📊 **Price Prognosis Engine**
+*   **KAMIS-Integrated Insights**: Real-time market data from the Kenya Agricultural Market Information System (KAMIS).
+*   **Predictive Trends**: Historical and predictive price charts (KES/90kg) specifically tuned for harvesting seasons in hubs like Kitale.
+
+### 🌦️ **Climate-Aware Intelligence**
+*   **Regional Weather Sync**: Hyper-local weather data influences market advice—predicting supply drops due to logistics delays from heavy rains.
+
+---
+
+## 🚀 Tech Stack
+*   **Framework**: Next.js 15 (App Router)
+*   **Intelligence**: Gemini 2.5 Flash
+*   **Styling**: Premium Stone & Emerald Aesthetic (Vanilla CSS + Tailwind)
+*   **Deployment**: Google Cloud Run (Cost-Optimized Standalone)
+
+---
+
+## 🛠️ Setup & Deployment
+
+### Local Development
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Cloud Run Deployment
+```bash
+gcloud run deploy shamba-app --source . --region europe-west1 --allow-unauthenticated
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏆 Hackathon Ready
+Crafted with focus on **Visual Excellence**, **Performance**, and **Real-World Impact**.
