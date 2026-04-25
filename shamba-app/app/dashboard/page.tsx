@@ -29,11 +29,11 @@ export default function DashboardPage() {
   }, [])
 
   return (
-    <div className="flex min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-500 pb-24 md:pb-0">
+    <div className="flex min-h-screen bg-white dark:bg-stone-900 transition-colors duration-500 pb-24 md:pb-0">
       <SideNavBar />
       
-      {/* Main Content Area - responsive padding for sidebar */}
-      <div className="flex-1 transition-all duration-300 ease-in-out md:pl-20 lg:pl-72">
+      {/* Main Content Area - responsive padding for floating sidebar */}
+      <div className="flex-1 transition-all duration-300 ease-in-out md:pl-28 lg:pl-80">
         <TopHeader />
         
         <main className="p-4 md:p-8 lg:p-12 max-w-7xl mx-auto space-y-8">

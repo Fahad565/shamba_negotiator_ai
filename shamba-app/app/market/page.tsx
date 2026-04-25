@@ -16,10 +16,10 @@ const priceData = [
 
 export default function PredictionPage() {
   return (
-    <div className="flex min-h-screen bg-stone-50 dark:bg-stone-950 pb-24 md:pb-0">
+    <div className="flex min-h-screen bg-white dark:bg-stone-900 pb-24 md:pb-0">
       <SideNavBar />
       
-      <div className="flex-1 transition-all duration-300 md:pl-20 lg:pl-72">
+      <div className="flex-1 transition-all duration-300 md:pl-28 lg:pl-80">
         <TopHeader />
         
         <main className="p-4 md:p-8 max-w-5xl mx-auto space-y-8">

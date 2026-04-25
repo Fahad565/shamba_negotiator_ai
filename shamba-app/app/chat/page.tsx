@@ -62,10 +62,10 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-white dark:bg-stone-900">
       <SideNavBar />
       
-      <div className="flex-1 flex flex-col transition-all duration-300 md:pl-20 lg:pl-72">
+      <div className="flex-1 flex flex-col transition-all duration-300 md:pl-28 lg:pl-80">
         <TopHeader />
         
         {/* Context Bar - Sticky and correctly aligned */}
@@ -123,7 +123,7 @@ export default function ChatPage() {
         </main>
 
         {/* Input Area */}
-        <div className="fixed bottom-0 left-0 transition-all duration-300 md:left-20 lg:left-72 right-0 bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 p-4 z-40 pb-28 md:pb-6 shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
+        <div className="fixed bottom-0 left-0 transition-all duration-300 md:left-28 lg:left-80 right-0 bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 p-4 z-40 pb-28 md:pb-6 shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
           <div className="max-w-3xl mx-auto flex items-end gap-2 relative">
             <div className="flex-1 relative rounded-2xl border border-tertiary bg-surface-container-lowest focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-sm flex items-center overflow-hidden">
               <button className="p-3 text-on-surface-variant hover:text-primary transition-colors">
