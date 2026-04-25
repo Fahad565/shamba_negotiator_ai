@@ -4,7 +4,7 @@ import { SideNavBar } from "@/components/SideNavBar"
 import { BottomNavBar } from "@/components/BottomNavBar"
 import { TopHeader } from "@/components/TopHeader"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from "recharts"
-import { Sprout, MapPin, TrendingDown, Campaign, Brain, MessageSquare, CloudRain, AlertTriangle } from "lucide-react"
+import { Sprout, MapPin, TrendingDown, Megaphone, Brain, MessageSquare, CloudRain, AlertTriangle } from "lucide-react"
 
 const priceData = [
   { month: "Sep", historical: 2800, predicted: null },
@@ -16,10 +16,10 @@ const priceData = [
 
 export default function PredictionPage() {
   return (
-    <div className="flex min-h-screen bg-background pb-24 md:pb-0">
+    <div className="flex min-h-screen bg-stone-50 dark:bg-stone-950 pb-24 md:pb-0">
       <SideNavBar />
       
-      <div className="flex-1 md:pl-64">
+      <div className="flex-1 transition-all duration-300 md:pl-20 lg:pl-72">
         <TopHeader />
         
         <main className="p-4 md:p-8 max-w-5xl mx-auto space-y-8">
@@ -37,7 +37,7 @@ export default function PredictionPage() {
             <div className="absolute -right-10 -top-10 w-48 h-48 bg-primary-fixed/30 rounded-full blur-3xl opacity-60"></div>
             <div className="relative z-10 flex flex-col gap-6">
               <div className="inline-flex items-center gap-2 bg-secondary text-on-secondary px-4 py-2 rounded-full text-xs font-bold w-fit shadow-sm">
-                <Campaign className="w-4 h-4 shrink-0" /> Strong Recommendation
+                <Megaphone className="w-4 h-4 shrink-0" /> Strong Recommendation
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-on-background leading-tight max-w-xl">
                 Sell 60% this week, store the rest.
