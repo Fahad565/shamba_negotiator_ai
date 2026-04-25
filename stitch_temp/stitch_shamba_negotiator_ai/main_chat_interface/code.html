@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shamba Negotiator - Chat</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-tint": "#3f6653",
+                        "surface-container-high": "#e9e8e4",
+                        "on-secondary-fixed-variant": "#802909",
+                        "tertiary-container": "#583315",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f4f4f0",
+                        "surface-variant": "#e3e2df",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#732001",
+                        "secondary": "#a0401f",
+                        "on-background": "#1b1c1a",
+                        "secondary-fixed": "#ffdbd0",
+                        "on-primary-container": "#86af99",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline": "#717973",
+                        "surface-dim": "#dbdad6",
+                        "tertiary": "#3e1e03",
+                        "on-tertiary-fixed-variant": "#653d1e",
+                        "primary": "#012d1d",
+                        "on-tertiary-fixed": "#301400",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "surface-container": "#efeeea",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#c1ecd4",
+                        "secondary-container": "#fe8760",
+                        "surface": "#faf9f5",
+                        "on-surface-variant": "#414844",
+                        "background": "#faf9f5",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffb59e",
+                        "inverse-surface": "#2f312e",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "on-surface": "#1b1c1a",
+                        "inverse-on-surface": "#f2f1ed",
+                        "outline-variant": "#c1c8c2",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#3a0b00",
+                        "primary-container": "#1b4332",
+                        "on-tertiary-container": "#d19b75",
+                        "on-primary-fixed": "#002114",
+                        "tertiary-fixed-dim": "#f4bb92",
+                        "surface-container-highest": "#e3e2df",
+                        "surface-bright": "#faf9f5",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#a5d0b9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-gap": "12px",
+                        "unit": "4px",
+                        "touch-target-min": "48px",
+                        "container-padding": "16px",
+                        "section-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased h-screen w-screen overflow-hidden flex">
+<!-- Desktop SideNavBar -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-stone-50 dark:bg-stone-950 text-emerald-900 dark:text-emerald-400 font-plus-jakarta-sans text-sm h-full w-64 border-r border-stone-200 dark:border-stone-800 shadow-xl">
+<div class="p-6 border-b border-stone-200 dark:border-stone-800">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden flex-shrink-0">
+<img alt="Farmer Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a cheerful African woman farmer with a warm smile, wearing a sun hat, bathed in natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAodx3WZckqba9CyU0328-Lgb6ZWPtW5PTwYTek8WKNOKxuNhO0uSK9LqoDbqUmBYDDuXILRPIJrtCpOE_j9lUaWGA3QmR1GL2g2-9yFBqfA5bdSVXxPT1j_FK4T4Uunnwqg69xaI3ZE9NNwtl478alVvU6O3FBZo21OoctmMCGkduGz1kooxVYaVoc5bNwB8sozXR7d8OVTRU8v891VLbKI8StOVKEWZkNwMBLwBN1yUGHeX6oFyFroNiEb4ay15l7j0c9JhGRTVI"/>
+</div>
+<div>
+<h2 class="font-bold text-emerald-900 dark:text-emerald-400 text-body-lg">Kitale Maize Hub</h2>
+<p class="text-stone-600 dark:text-stone-400 text-label-sm">Market active now</p>
+</div>
+</div>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-100/50 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-100 font-bold border-r-4 border-emerald-700 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span>Crop Details</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span>Location Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500" href="#">
+<span class="material-symbols-outlined">show_chart</span>
+<span>Price Trends</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</a>
+</div>
+<div class="p-6">
+<button class="w-full py-3 px-4 bg-secondary text-on-secondary rounded-xl font-label-md shadow-sm hover:bg-secondary-container hover:text-on-secondary-container transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-secondary">
+                Get Help
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col relative w-full md:pl-64 h-full bg-surface">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-4 py-3 w-full sticky top-0 z-50 bg-stone-50/90 dark:bg-stone-950/90 backdrop-blur-md text-emerald-900 dark:text-emerald-400 font-plus-jakarta-sans antialiased docked full-width top-0 border-b border-stone-200 dark:border-stone-800 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h1 class="text-lg font-bold tracking-tight text-emerald-900 dark:text-emerald-400 font-headline-md text-primary">Shamba Negotiator</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Context Bar (Visible on mobile, reinforces sidebar on desktop) -->
+<div class="px-container-padding py-3 bg-surface-container-lowest border-b border-outline-variant flex gap-3 overflow-x-auto hide-scrollbar z-30 shadow-sm">
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low rounded-lg border border-outline-variant/50 shrink-0">
+<span class="material-symbols-outlined text-[18px] text-tertiary">eco</span>
+<span class="font-label-sm text-on-surface-variant">Crop:</span>
+<span class="font-label-md text-on-surface">Maize</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low rounded-lg border border-outline-variant/50 shrink-0">
+<span class="material-symbols-outlined text-[18px] text-tertiary">location_on</span>
+<span class="font-label-sm text-on-surface-variant">Location:</span>
+<span class="font-label-md text-on-surface">Kitale</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-primary-fixed/30 rounded-lg border border-primary/20 shrink-0">
+<span class="material-symbols-outlined text-[18px] text-primary">trending_up</span>
+<span class="font-label-sm text-on-surface-variant">Trend:</span>
+<span class="font-label-md text-primary">Upwards</span>
+</div>
+</div>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto px-container-padding py-section-margin flex flex-col gap-stack-gap pb-32 md:pb-24 scroll-smooth">
+<!-- Date Divider -->
+<div class="flex justify-center my-2">
+<span class="px-3 py-1 bg-surface-container rounded-full font-label-sm text-on-surface-variant text-[11px] shadow-sm">Today</span>
+</div>
+<!-- User Message (Mama Akinyi) -->
+<div class="flex flex-col items-end w-full max-w-2xl self-end">
+<div class="flex items-end gap-2 max-w-[85%]">
+<div class="bg-surface-container-lowest text-on-surface px-4 py-3 rounded-2xl rounded-tr-sm shadow-sm border border-outline-variant/20">
+<p class="font-body-md text-body-md">Bro, bei ya mahindi leo iko aje?</p>
+</div>
+</div>
+<span class="font-label-sm text-on-surface-variant/70 text-[10px] mt-1 mr-1">10:42 AM</span>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col items-start w-full max-w-2xl self-start">
+<div class="flex items-end gap-2 max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm mb-1">
+<span class="material-symbols-outlined text-on-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm">
+<p class="font-body-md text-body-md">Sasa Mama Akinyi! Maize prices in Kitale are at <span class="font-bold">KES 3,200</span> per bag today. There's a slight increase from yesterday.</p>
+</div>
+</div>
+<span class="font-label-sm text-on-surface-variant/70 text-[10px] mt-1 ml-10">10:43 AM</span>
+</div>
+</main>
+<!-- Input Area -->
+<div class="absolute bottom-0 md:bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant p-3 md:p-4 z-40 pb-24 md:pb-4 shadow-[0_-8px_24px_rgba(139,94,60,0.03)]">
+<div class="max-w-3xl mx-auto flex items-end gap-2 relative">
+<div class="flex-1 relative rounded-2xl border border-tertiary bg-surface-container-lowest focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all shadow-sm flex items-center overflow-hidden">
+<button class="p-3 text-on-surface-variant hover:text-primary transition-colors h-full flex items-center">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<textarea class="flex-1 w-full border-none bg-transparent py-3 px-2 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:ring-0 resize-none max-h-32 overflow-y-auto" placeholder="Type a message..." rows="1" style="min-height: 48px;"></textarea>
+<button class="p-3 text-tertiary hover:text-primary transition-colors h-full flex items-center">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+</div>
+<button class="h-[48px] w-[48px] shrink-0 bg-primary text-on-primary rounded-full flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+</div>
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/95 dark:bg-stone-900/95 backdrop-blur-lg text-emerald-800 dark:text-emerald-400 text-[11px] font-medium font-plus-jakarta-sans docked full-width bottom-0 border-t rounded-t-2xl border-stone-100 dark:border-stone-800 shadow-[0_-4px_12px_rgba(139,94,60,0.06)]">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-90 transition-all duration-200 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-emerald-50 dark:bg-emerald-900/30 text-emerald-900 dark:text-emerald-100 rounded-xl px-3 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-90 transition-all duration-200 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span>Negotiate</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-90 transition-all duration-200 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<span>Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-90 transition-all duration-200 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">psychology</span>
+<span>Advice</span>
+</a>
+</nav>
+</div>
+</body></html>

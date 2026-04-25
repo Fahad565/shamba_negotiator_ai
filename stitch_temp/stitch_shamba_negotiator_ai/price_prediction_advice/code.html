@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shamba Negotiator - Price Insight</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdcc5",
+                      "surface-tint": "#3f6653",
+                      "surface-container-high": "#e9e8e4",
+                      "on-secondary-fixed-variant": "#802909",
+                      "tertiary-container": "#583315",
+                      "on-primary": "#ffffff",
+                      "surface-container-low": "#f4f4f0",
+                      "surface-variant": "#e3e2df",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#732001",
+                      "secondary": "#a0401f",
+                      "on-background": "#1b1c1a",
+                      "secondary-fixed": "#ffdbd0",
+                      "on-primary-container": "#86af99",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "outline": "#717973",
+                      "surface-dim": "#dbdad6",
+                      "tertiary": "#3e1e03",
+                      "on-tertiary-fixed-variant": "#653d1e",
+                      "primary": "#012d1d",
+                      "on-tertiary-fixed": "#301400",
+                      "primary-fixed-dim": "#a5d0b9",
+                      "surface-container": "#efeeea",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#c1ecd4",
+                      "secondary-container": "#fe8760",
+                      "surface": "#faf9f5",
+                      "on-surface-variant": "#414844",
+                      "background": "#faf9f5",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#ffb59e",
+                      "inverse-surface": "#2f312e",
+                      "on-primary-fixed-variant": "#274e3d",
+                      "on-surface": "#1b1c1a",
+                      "inverse-on-surface": "#f2f1ed",
+                      "outline-variant": "#c1c8c2",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#3a0b00",
+                      "primary-container": "#1b4332",
+                      "on-tertiary-container": "#d19b75",
+                      "on-primary-fixed": "#002114",
+                      "tertiary-fixed-dim": "#f4bb92",
+                      "surface-container-highest": "#e3e2df",
+                      "surface-bright": "#faf9f5",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#a5d0b9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-gap": "12px",
+                      "unit": "4px",
+                      "touch-target-min": "48px",
+                      "container-padding": "16px",
+                      "section-margin": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-fixed selection:text-primary">
+<!-- TopAppBar -->
+<header class="bg-stone-50/90 dark:bg-stone-950/90 backdrop-blur-md flex justify-between items-center px-4 py-3 w-full sticky top-0 z-50 border-b border-stone-200 dark:border-stone-800 shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-900 dark:text-emerald-400 text-2xl">menu</span>
+<span class="text-lg font-bold tracking-tight text-emerald-900 dark:text-emerald-400 font-plus-jakarta-sans antialiased">Shamba Negotiator</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-95 duration-150 p-2 rounded-full w-[touch-target-min] h-[touch-target-min] flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-95 duration-150 p-2 rounded-full w-[touch-target-min] h-[touch-target-min] flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<aside class="bg-stone-50 dark:bg-stone-950 font-plus-jakarta-sans text-sm h-full w-64 border-r border-stone-200 dark:border-stone-800 shadow-xl hidden md:flex flex-col fixed left-0 top-[60px] z-40 pb-[60px]">
+<div class="p-4 border-b border-stone-200 dark:border-stone-800">
+<div class="flex items-center gap-3 mb-2">
+<img alt="Farmer Profile" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp0TP68gfPOzu3nOnrYgHU6C5_lME9mJjpb2ub6YbpEA0SfB6XuLwhpPWWfqmnZV88KCJUeumcrBh14jxOhPwpvR9UqNRfBHWOX-LUUBtZ_8WopU5YGpfhlFaHCJcfkmy_W7rrD_VRbuglz76mZvROywLprH1YFyqP0ephTWrxv72S7_yli_iI_iFVBUqCOWfI3np7YBsMfDYBBNcOzs0-8K6Opw5Jge-0meOi8QNfPRQC5SUB1Rdi7q2QYQmrHeAAI6_A46jxS18"/>
+<div>
+<h2 class="font-bold text-emerald-900 dark:text-emerald-400">Kitale Maize Hub</h2>
+<p class="text-xs text-stone-600 dark:text-stone-400">Market active now</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
+<button class="flex items-center gap-3 px-6 py-3 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500 w-full text-left">
+<span class="material-symbols-outlined">eco</span>
+<span>Crop Details</span>
+</button>
+<button class="flex items-center gap-3 px-6 py-3 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500 w-full text-left">
+<span class="material-symbols-outlined">location_on</span>
+<span>Location Settings</span>
+</button>
+<!-- Active Tab -->
+<button class="flex items-center gap-3 px-6 py-3 bg-emerald-100/50 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-100 font-bold border-r-4 border-emerald-700 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500 w-full text-left">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">show_chart</span>
+<span>Price Trends</span>
+</button>
+<button class="flex items-center gap-3 px-6 py-3 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-500 w-full text-left">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</button>
+</nav>
+<div class="p-4 border-t border-stone-200 dark:border-stone-800">
+<button class="w-full py-3 bg-emerald-900 text-white rounded-lg font-medium hover:bg-emerald-800 transition-colors flex items-center justify-center gap-2 h-[touch-target-min]">
+<span class="material-symbols-outlined text-[18px]">help</span> Get Help
+            </button>
+</div>
+</aside>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden bg-white/95 dark:bg-stone-900/95 backdrop-blur-lg border-t rounded-t-2xl border-stone-100 dark:border-stone-800 shadow-[0_-4px_12px_rgba(139,94,60,0.06)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3">
+<button class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-90 transition-all duration-200 ease-out w-[touch-target-min]">
+<span class="material-symbols-outlined text-[24px] mb-1">dashboard</span>
+<span class="text-[11px] font-medium font-plus-jakarta-sans">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-90 transition-all duration-200 ease-out w-[touch-target-min]">
+<span class="material-symbols-outlined text-[24px] mb-1">forum</span>
+<span class="text-[11px] font-medium font-plus-jakarta-sans">Negotiate</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1.5 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-90 transition-all duration-200 ease-out w-[touch-target-min]">
+<span class="material-symbols-outlined text-[24px] mb-1">trending_up</span>
+<span class="text-[11px] font-medium font-plus-jakarta-sans">Market</span>
+</button>
+<!-- Active Tab -->
+<button class="flex flex-col items-center justify-center bg-emerald-50 dark:bg-emerald-900/30 text-emerald-900 dark:text-emerald-100 rounded-xl px-3 py-1.5 active:scale-90 transition-all duration-200 ease-out min-w-[touch-target-min]">
+<span class="material-symbols-outlined text-[24px] mb-1" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="text-[11px] font-medium font-plus-jakarta-sans">Advice</span>
+</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-6 pb-[100px] md:pb-12 px-container-padding max-w-4xl mx-auto flex flex-col gap-section-margin">
+<!-- Header -->
+<div class="flex flex-col gap-1">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Maize Price Outlook</h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                Kitale Region • Forecast updated today
+            </p>
+</div>
+<!-- Hero Recommendation Card (Glassmorphism & Tonal Layers) -->
+<div class="bg-surface-container-low rounded-xl p-6 md:p-8 border border-outline-variant/60 shadow-[0_8px_24px_rgba(139,94,60,0.06)] relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-primary-fixed/30 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex items-center gap-1.5 bg-secondary text-on-secondary px-3 py-1.5 rounded-full font-label-sm text-label-sm w-fit shadow-sm">
+<span class="material-symbols-outlined text-[16px]">campaign</span> Strong Recommendation
+                    </div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-background max-w-md leading-tight">
+                    Sell 60% this week, store the rest.
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    Based on market velocity, we expect a <strong>price drop next month</strong>. Lock in current highs now before neighboring harvests flood the market.
+                </p>
+</div>
+</div>
+<!-- Detail Grid: Chart & Factors -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-gap">
+<!-- Chart Area (Spans 2 columns on large screens) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-5 md:p-6 border border-outline-variant/60 shadow-sm flex flex-col gap-5">
+<div class="flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-background">Price Trend (KES / 90kg)</h3>
+<div class="flex gap-4 font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<div class="w-3 h-1 bg-surface-tint rounded-full"></div> Historical
+                        </div>
+<div class="flex items-center gap-1.5 text-surface-tint">
+<div class="w-3 h-1 border-t-2 border-dashed border-surface-tint"></div> Predicted
+                        </div>
+</div>
+</div>
+<!-- Simulated Chart -->
+<div class="h-56 w-full relative flex items-end justify-between pt-8 pb-8 px-2 border-b border-surface-variant">
+<!-- Y-axis values -->
+<div class="absolute left-0 top-0 h-[calc(100%-2rem)] flex flex-col justify-between text-[11px] text-outline pb-0 w-10 text-right pr-2">
+<span>3600</span>
+<span>3200</span>
+<span>2800</span>
+</div>
+<div class="ml-10 w-full h-full relative flex items-end justify-between">
+<!-- SVG Chart Lines -->
+<svg class="absolute inset-0 w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Background Grid Lines -->
+<line class="text-surface-variant" stroke="currentColor" stroke-width="0.5" x1="0" x2="100" y1="0" y2="0"></line>
+<line class="text-surface-variant" stroke="currentColor" stroke-width="0.5" x1="0" x2="100" y1="50" y2="50"></line>
+<line class="text-surface-variant" stroke="currentColor" stroke-width="0.5" x1="0" x2="100" y1="100" y2="100"></line>
+<!-- Historical Area & Line -->
+<path class="text-primary-fixed/40" d="M 0,100 L 0,85 L 33,70 L 66,20 L 66,100 Z" fill="currentColor"></path>
+<path class="text-surface-tint" d="M 0,85 L 33,70 L 66,20" fill="none" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+<!-- Predicted Area & Line -->
+<path class="text-surface-variant/30" d="M 66,100 L 66,20 L 100,55 L 100,100 Z" fill="currentColor"></path>
+<path class="text-surface-tint" d="M 66,20 L 100,55" fill="none" stroke="currentColor" stroke-dasharray="6,4" stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+<!-- Data Points -->
+<circle class="fill-surface stroke-surface-tint stroke-2" cx="0" cy="85" r="3"></circle>
+<circle class="fill-surface stroke-surface-tint stroke-2" cx="33" cy="70" r="3"></circle>
+<circle class="fill-surface-tint stroke-surface stroke-2" cx="66" cy="20" r="4.5"></circle>
+<circle class="fill-surface stroke-surface-tint stroke-2 stroke-dashed" cx="100" cy="55" r="3"></circle>
+</svg>
+<!-- X-axis labels -->
+<div class="absolute -bottom-8 w-full flex justify-between text-[11px] text-outline font-medium">
+<span class="translate-x-[-50%]">Sep</span>
+<span class="translate-x-[-50%]">Oct</span>
+<span class="translate-x-[-50%] text-surface-tint font-bold bg-primary-fixed/30 px-2 py-0.5 rounded">Nov (Now)</span>
+<span class="translate-x-[-50%]">Dec</span>
+</div>
+</div>
+</div>
+<!-- Quick Stats below chart -->
+<div class="flex gap-4 mt-1">
+<div class="flex-1 bg-surface rounded-lg p-3 border border-outline-variant/40">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold block mb-1">Current Peak</span>
+<span class="font-body-lg text-body-lg font-semibold text-primary">KES 3,450</span>
+</div>
+<div class="flex-1 bg-error-container/40 rounded-lg p-3 border border-error-container">
+<span class="text-[10px] text-on-error-container uppercase tracking-wider font-semibold block mb-1">Predicted Drop</span>
+<span class="font-body-lg text-body-lg font-semibold text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">trending_down</span> -12%
+                        </span>
+</div>
+</div>
+</div>
+<!-- Side Bento Column -->
+<div class="flex flex-col gap-stack-gap">
+<!-- Climate Factor Card -->
+<div class="bg-surface-container-high rounded-xl p-5 shadow-sm border border-outline-variant/30 flex flex-col gap-4 flex-1">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed/50 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">rainy</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-background">Rainfall Impact</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                        Heavy rains forecasted for late November will temporarily delay harvests, creating a short supply window. Once rains subside, the December influx will drive prices down.
+                    </p>
+</div>
+<!-- Generate Script CTA -->
+<button class="bg-primary hover:bg-primary-container text-on-primary rounded-xl p-6 shadow-md transition-all active:scale-[0.98] flex flex-col items-center justify-center gap-3 group border border-primary-container shrink-0 min-h-[140px]">
+<span class="material-symbols-outlined text-4xl text-primary-fixed group-hover:-translate-y-1 transition-transform duration-300">forum</span>
+<span class="font-headline-md text-headline-md text-center text-[18px]">Generate Negotiation Script</span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim opacity-90 text-center font-normal">Get AI bargaining tips to secure top price today</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>
